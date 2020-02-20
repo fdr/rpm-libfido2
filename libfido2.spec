@@ -1,14 +1,14 @@
 Name:           libfido2
 
-Version:        1.3.0
-Release:        3%{?dist}
+Version:        1.3.1
+Release:        1%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
 URL:            https://github.com/Yubico/%{name}
 Source0:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz.sig
-Source2:        gpgkey-EE90AE0D19774C8386628FAAB428949EF7914718.gpg
+Source2:        gpgkey-1D7308B0055F5AEF36944A8F27A9C24D9588EA0F.gpg
 
 BuildRequires:  cmake
 BuildRequires:  hidapi-devel
@@ -73,7 +73,6 @@ find %{buildroot} -type f -name "*.a" -delete -print
 %doc NEWS README.adoc
 %license LICENSE
 %{_libdir}/libfido2.so.1{,.*}
-%{_libdir}/libsk-libfido2.so
 
 %files devel
 %{_libdir}/pkgconfig/*
@@ -87,6 +86,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+
+* Thu Feb 20 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.3.1-1
+- 1.3.1 release
 
 * Mon Dec 16 2019 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.3.0-3
 - use yubico corp release site for sources and gpg signature
