@@ -1,7 +1,7 @@
 Name:           libfido2
 
 Version:        1.3.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -17,7 +17,7 @@ BuildRequires:  libudev-devel
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 BuildRequires:  gnupg2
-Requires:       u2f-hidraw-policy
+Requires:       (u2f-hidraw-policy if systemd-udev)
 
 %description
 %{name} is an open source library to support the FIDO2 protocol.  FIDO2 is
@@ -86,6 +86,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+
+* Sat Apr 11 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.3.1-2
+- change to require u2f-hidraw-policy only if systemd-udev (#1823002)
 
 * Thu Feb 20 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.3.1-1
 - 1.3.1 release
