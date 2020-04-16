@@ -1,14 +1,14 @@
 Name:           libfido2
 
-Version:        1.3.1
-Release:        2%{?dist}
+Version:        1.4.0
+Release:        1%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
 URL:            https://github.com/Yubico/%{name}
 Source0:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz.sig
-Source2:        gpgkey-1D7308B0055F5AEF36944A8F27A9C24D9588EA0F.gpg
+Source2:        gpgkey-7FBB6186957496D58C751AC20E777DD85755AA4A.gpg
 
 BuildRequires:  cmake
 BuildRequires:  hidapi-devel
@@ -86,6 +86,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+
+* Wed Apr 15 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.4.0-1
+- 1.4.0 release (#1824326)
 
 * Sat Apr 11 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.3.1-2
 - change to require u2f-hidraw-policy only if systemd-udev (#1823002)
