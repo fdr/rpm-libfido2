@@ -1,7 +1,7 @@
 Name:           libfido2
 
 Version:        1.4.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -57,14 +57,12 @@ gpgv2 --keyring %{SOURCE2} %{SOURCE1} %{SOURCE0}
 
 
 %build
-mkdir build
-cd build
-%cmake ..
-%make_build
+%cmake
+%cmake_build
 
 
 %install
-%make_install -C build
+%cmake_install
 # Remove static files per packaging guidelines
 find %{buildroot} -type f -name "*.a" -delete -print
 
@@ -86,9 +84,11 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+* Wed Jul 29 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.4.0-3
+- adapt to new Fedora cmake rpm macros
+
 * Tue Jul 28 2020 Fedora Release Engineering <releng@fedoraproject.org> - 1.4.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
-
 
 * Wed Apr 15 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.4.0-1
 - 1.4.0 release (#1824326)
