@@ -1,7 +1,7 @@
 Name:           libfido2
 
 Version:        1.4.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -84,6 +84,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+* Tue Sep 08 2020 Kalev Lember <klember@redhat.com> - 1.4.0-4
+- Rebuilt for libcbor soname bump
+
 * Wed Jul 29 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.4.0-3
 - adapt to new Fedora cmake rpm macros
 
