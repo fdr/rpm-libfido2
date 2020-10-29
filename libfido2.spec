@@ -1,7 +1,7 @@
 Name:           libfido2
 
 Version:        1.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -13,6 +13,9 @@ Source2:        gpgkey-7FBB6186957496D58C751AC20E777DD85755AA4A.gpg
 # Upstream patch for building on 32-bit platforms
 #
 Patch0001:      0001-add-two-casts-to-silence-warnings-on-32-bit.patch
+# Work around false positive from gcc-11 until its fixed upstream
+# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=97631
+Patch0002:      %{name}-gcc11.patch
 
 BuildRequires:  cmake
 BuildRequires:  hidapi-devel
@@ -88,6 +91,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+* Tuu Oct 29 2020 Jeff Law <law@redhat.com> 1.5.0-2
+- Work around false positive diagnostic in gcc-11
+
 * Fri Sep 11 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.5.0-1
 - 1.5.0 release (#1824326)
 - include upstream patch to fix 32-bit platform compile, reported at
