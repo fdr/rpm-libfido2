@@ -1,7 +1,7 @@
 Name:           libfido2
 
 Version:        1.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -24,6 +24,7 @@ BuildRequires:  libudev-devel
 BuildRequires:  openssl-devel
 BuildRequires:  gcc
 BuildRequires:  gnupg2
+BuildRequires:  make
 Requires:       (u2f-hidraw-policy if systemd-udev)
 
 %description
@@ -91,7 +92,11 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
-* Tuu Oct 29 2020 Jeff Law <law@redhat.com> 1.5.0-2
+* Wed Nov 04 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.5.0-3
+- add BR make
+- fix typo in changelog day (Tuu -> Thu) to make rpmlint happy
+
+* Thu Oct 29 2020 Jeff Law <law@redhat.com> 1.5.0-2
 - Work around false positive diagnostic in gcc-11
 
 * Fri Sep 11 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.5.0-1
