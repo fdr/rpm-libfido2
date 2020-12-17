@@ -1,14 +1,14 @@
 Name:           libfido2
 
 Version:        1.5.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
 URL:            https://github.com/Yubico/%{name}
 Source0:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz.sig
-Source2:        gpgkey-7FBB6186957496D58C751AC20E777DD85755AA4A.gpg
+Source2:        yubico-release-gpgkeys.asc
 #
 # Upstream patch for building on 32-bit platforms
 #
@@ -60,7 +60,7 @@ authentication device.
 
 
 %prep
-gpgv2 --keyring %{SOURCE2} %{SOURCE1} %{SOURCE0}
+%{gpgverify} --keyring='%{SOURCE2}' --signature='%{SOURCE1}' --data='%{SOURCE0}'
 %autosetup -p1 -n %{name}-%{version}
 
 
@@ -92,6 +92,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+* Thu Dec 17 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.5.0-4
+- Use gpgverify macro and ascii armored yubico release keys
+
 * Wed Nov 04 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.5.0-3
 - add BR make
 - fix typo in changelog day (Tuu -> Thu) to make rpmlint happy
