@@ -1,7 +1,7 @@
 Name:           libfido2
 
-Version:        1.5.0
-Release:        4%{?dist}
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -9,10 +9,6 @@ URL:            https://github.com/Yubico/%{name}
 Source0:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz.sig
 Source2:        yubico-release-gpgkeys.asc
-#
-# Upstream patch for building on 32-bit platforms
-#
-Patch0001:      0001-add-two-casts-to-silence-warnings-on-32-bit.patch
 # Work around false positive from gcc-11 until its fixed upstream
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=97631
 Patch0002:      %{name}-gcc11.patch
@@ -92,6 +88,9 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+* Wed Jan 13 2021 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.6.0-1
+- 1.6.0 release (#1910101)
+
 * Thu Dec 17 2020 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.5.0-4
 - Use gpgverify macro and ascii armored yubico release keys
 
