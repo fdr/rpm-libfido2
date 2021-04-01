@@ -1,7 +1,7 @@
 Name:           libfido2
 
-Version:        1.6.0
-Release:        2%{?dist}
+Version:        1.7.0
+Release:        1%{?dist}
 Summary:        FIDO2 library
 
 License:        BSD
@@ -9,15 +9,13 @@ URL:            https://github.com/Yubico/%{name}
 Source0:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/%{name}/Releases/%{name}-%{version}.tar.gz.sig
 Source2:        yubico-release-gpgkeys.asc
-# Work around false positive from gcc-11 until its fixed upstream
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=97631
-Patch0002:      %{name}-gcc11.patch
 
 BuildRequires:  cmake
 BuildRequires:  hidapi-devel
 BuildRequires:  libcbor-devel
 BuildRequires:  libudev-devel
 BuildRequires:  openssl-devel
+BuildRequires:  zlib-devel
 BuildRequires:  gcc
 BuildRequires:  gnupg2
 BuildRequires:  make
@@ -88,6 +86,11 @@ find %{buildroot} -type f -name "*.a" -delete -print
 
 
 %changelog
+* Thu Apr 01 2021 Gary Buhrmaster <gary.buhrmaster@gmail.com> 1.7.0-1
+- 1.7.0 release (#1944499)
+- Remove workaround for gcc-11 (fixed upstream)
+- add new BR zlib-devel
+
 * Tue Jan 26 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.6.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
 
