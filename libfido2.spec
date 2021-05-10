@@ -19,7 +19,6 @@ BuildRequires:  zlib-devel
 BuildRequires:  gcc
 BuildRequires:  gnupg2
 BuildRequires:  make
-Requires:       (u2f-hidraw-policy if systemd-udev)
 
 %description
 %{name} is an open source library to support the FIDO2 protocol.  FIDO2 is
